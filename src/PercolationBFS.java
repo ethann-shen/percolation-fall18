@@ -26,6 +26,11 @@ public class PercolationBFS extends PercolationDFSFast {
 				qp.add((row-1) * size + c);
 			}   
 			
+			if (inBounds(r+1, c) && myGrid[r+1][c] == OPEN && myGrid[r+1][c] != FULL) {
+				myGrid[r+1][c] = FULL;
+				qp.add((row+1) * size + c);
+			}   
+			
 			if (inBounds(r, c-1) && myGrid[r][c-1] == OPEN && myGrid[r][c-1] != FULL) {
 				myGrid[r][c-1] = FULL;
 				qp.add((row) * size + c-1);
@@ -36,10 +41,7 @@ public class PercolationBFS extends PercolationDFSFast {
 				qp.add((row) * size + c+1);
 			}   
 			
-			if (inBounds(r+1, c) && myGrid[r+1][c] == OPEN && myGrid[r+1][c] != FULL) {
-				myGrid[r+1][c] = FULL;
-				qp.add((row+1) * size + c);
-			}   
+		
 		}
 	}
 
