@@ -4,8 +4,8 @@ public class PercolationUF implements IPercolate{
 	protected int[][] myGrid;
 	protected int myOpenCount;
 	protected IUnionFind myFinder;
-	private final int VTOP;
-	private final int VBOTTOM;
+	//private final int VTOP;
+	//private final int VBOTTOM;
 
 	@Override
 	public void open(int row, int col) {
