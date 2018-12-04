@@ -1,49 +1,87 @@
 
 public class PercolationUF implements IPercolate{
 	
-	protected int[][] myGrid;
+	protected boolean[][] myGrid;
 	protected int myOpenCount;
 	protected IUnionFind myFinder;
 	private final int VTOP;
 	private final int VBOTTOM;
 	
 	PercolationUF(int size, IUnionFind finder) {
+		myGrid = new boolean[size][size];
 		VTOP = size * size;
 		VBOTTOM = size*size+1;
-		finder.initialize(size*size + 2);
+		myFinder = finder;
+		myFinder.initialize(size*size + 2);
+		
 	}
+	
+	public int getIndex(int row, int col) {
+		int size = myGrid.length;
+		return row * size + col;
+	}
+	
 	
 	@Override
 	public void open(int row, int col) {
-		// TODO Auto-generated method stub
+		int size = myGrid.length;
+		if (! inBounds(row,col)) {
+			throw new IndexOutOfBoundsException(
+					String.format("(%d,%d) not in bounds", row,col));
+		}
+		if (row == 0 && isOpen(row,col)) {
+			myFinder.union(row*size + col, VTOP);
+		}
+		if (row == size - 1 && isOpen(row,col)) {
+			myFinder.union(row*size + col, VBOTTOM);
+		}
+
+		if (isOpen(row+1,col)) {
+			myFinder.union(row*size + col, (row+1) * size + col);
+		}
+		if (isOpen(row-1,col)) {
+			myFinder.union(row*size + col, (row-1) * size + col);
+		}
+		if (isOpen(row,col+1)) {
+			myFinder.union(row*size + col, row*size + (col+1));
+		}
+		if (isOpen(row,col-1)) {
+			myFinder.union(row*size + col, row*size + (col-1));
+		}
 		
 	}
 
 	@Override
 	public boolean isOpen(int row, int col) {
-		if ()
-		return myGrid;
+		if (! inBounds(row,col)) {
+			throw new IndexOutOfBoundsException(
+					String.format("(%d,%d) not in bounds", row,col));
+		}
+		return myGrid[row][col];
 	}
 
 	@Override
 	public boolean isFull(int row, int col) {
-		// TODO Auto-generated method stub
-		return false;
+		if (! inBounds(row,col)) {
+			throw new IndexOutOfBoundsException(
+					String.format("(%d,%d) not in bounds", row,col));
+		}
+		return myFinder.connected(row*myGrid.length + col, VTOP);
+		
+		
 	}
 
 	@Override
 	public boolean percolates() {
-		// TODO Auto-generated method stub
-		return false;
+		return myFinder.connected(VTOP, VBOTTOM);
 	}
 
 	@Override
 	public int numberOfOpenSites() {
-		// TODO Auto-generated method stub
-		return 0;
+		return myOpenCount;
 	}
 
-	protected boolean inBounds(int row, int col) {
+	public boolean inBounds(int row, int col) {
 		if (row < 0 || row >= myGrid.length) return false;
 		if (col < 0 || col >= myGrid[0].length) return false;
 		return true;
