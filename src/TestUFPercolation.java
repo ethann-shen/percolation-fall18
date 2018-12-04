@@ -11,7 +11,6 @@ public class TestUFPercolation {
 	}
 		
 	/**
-	 * 
 	 * This test checks if PercolationUF's isOpen method works correctly
 	 */
 	@Test(timeout = 20000)
@@ -19,8 +18,8 @@ public class TestUFPercolation {
 		IPercolate uf = getPercolator(10);
 		for (int i = 1; i < 10; i++)
 			for (int j = 0; j < 10; j++) {
-				uf.isOpen(i, j);
-				assertFalse("This test checks if PercolationUF's isOpen method " + "works correctly", uf.isOpen(i, j));
+				uf.open(i, j);
+				assertTrue("This test checks if PercolationUF's isOpen method " + "works correctly", uf.isOpen(i, j));
 			}
 	}
 
@@ -32,8 +31,8 @@ public class TestUFPercolation {
 		IPercolate uf = getPercolator(10);
 		for (int i = 0; i < 10; i++)
 			for (int j = 0; j < 10; j++) {
-				uf.isFull(i, j);
-				assertFalse("This test checks if PercolationUF's isFull method " + "works correctly", uf.isFull(i, j));
+				uf.open(i, j);
+				assertTrue("This test checks if PercolationUF's isFull method " + "works correctly", uf.isFull(i, j));
 			}
 	}
 	
