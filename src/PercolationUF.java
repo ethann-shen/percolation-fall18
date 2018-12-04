@@ -35,6 +35,7 @@ public class PercolationUF implements IPercolate{
 		}
 		
 		myGrid[row][col] = true;
+		myOpenCount = 1;
 		
 		if (row == 0 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VTOP);
@@ -61,7 +62,7 @@ public class PercolationUF implements IPercolate{
 			myOpenCount += 1;
 
 		}
-		if (inBounds(row,col-1) && isOpen(row,col-1) && isOpen(row,col)) {
+		if (inBounds(row,col-1) && isOpen(row,col-1) ) {
 			myFinder.union(row*size + col, row*size + (col-1));
 			myOpenCount += 1;
 
