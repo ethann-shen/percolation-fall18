@@ -62,5 +62,17 @@ grid		time
 25600	27080.784
 51200	162484.704
 
-86400 seconds is somewhere between a grid size of 25600 and 51200. I did 86400/27080.784 = 3.19. I then did 6/3.19 = 1.88, to figure out how much I should multiply 25600 by. 
-Then I multiplied 1.88 and 25600 and got 48142.32. The largest grid size you can run is approximately 48142.
+Since the average of 27080.784 seconds and 162484.704 seconds is around 94782.74 seconds, we will estimate that the largest grid size is a little lower than the average 
+of 25600 and 51200, which is 38400. More specifically, a better estimate can be found by doing (38400 * 86400
+
+
+
+
+
+
+
+
+
+
+
+

@@ -39,12 +39,9 @@ public class PercolationUF implements IPercolate{
 		
 		if (row == 0 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VTOP);
-			myOpenCount +=1;
 		}
 		if (row == size - 1 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VBOTTOM);
-			myOpenCount += 1;
-
 		}
  
 		if (inBounds(row+1,col) && isOpen(row+1,col) && isOpen(row,col)) {
