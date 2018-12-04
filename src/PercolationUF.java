@@ -12,6 +12,7 @@ public class PercolationUF implements IPercolate{
 		VBOTTOM = size*size+1;
 		finder.initialize(size*size + 2);
 	}
+	
 	@Override
 	public void open(int row, int col) {
 		// TODO Auto-generated method stub
@@ -20,8 +21,8 @@ public class PercolationUF implements IPercolate{
 
 	@Override
 	public boolean isOpen(int row, int col) {
-		// TODO Auto-generated method stub
-		return false;
+		if ()
+		return myGrid;
 	}
 
 	@Override
@@ -42,4 +43,9 @@ public class PercolationUF implements IPercolate{
 		return 0;
 	}
 
+	protected boolean inBounds(int row, int col) {
+		if (row < 0 || row >= myGrid.length) return false;
+		if (col < 0 || col >= myGrid[0].length) return false;
+		return true;
+	}
 }
