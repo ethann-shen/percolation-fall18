@@ -5,6 +5,12 @@ public class PercolationDFSFast extends PercolationDFS{
 		super(n);
 	}
 	
+	/**
+	 * @param ints row and col 
+	 * makes updateOnOpen more efficient such that it does not clear all cells, but instead 
+	 * calls dfs once if the newly open cell should be marked FULL because it is in the top row
+	 * or because it is adjacent to an already FULL cell 
+	 */
 	@Override
 	protected void updateOnOpen(int row, int col) {
 		if (row == 0) {

@@ -7,7 +7,11 @@ public class PercolationBFS extends PercolationDFSFast {
 		super(n);
 	}
 
-	
+	/**
+	 * @param ints row and col 
+	 * dequeues a cell, and checks if the any of the dequeued cell's four neighbors are open. 
+	 * If any neighboring cell is open and not FULL, it is marked as FULL and enqueued 
+	 */
 	@Override
 	protected void dfs(int row, int col) {
 		int size = myGrid.length;

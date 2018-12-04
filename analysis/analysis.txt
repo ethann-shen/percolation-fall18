@@ -46,16 +46,17 @@ and the time for a grid size of 800 is 3.125. The time here increased by a facto
 
 2. How does doubling the number of trials affect running time.
 
-Doubling the number of trials doubles the running time. For example, when using 10 trials for Percolation UF,
+Doubling the number of trials roughly doubles the running time. For example, when using 10 trials for Percolation UF,
 it takes 1.716 seconds for a grid size of 800, but when using 20 trials for PercolationUF, it takes 
 3.125 seconds for a grid size of 800. 
-We can also look at PercolationBFS. When using 10 trials, it takes 2.072 seconds for a grid size of 800, 
+We can also look at PercolationBFS. When using 10 trials, it takes 2.345 seconds for a grid size of 800, 
 but when using 20 trials, it takes 4.444 seconds for a grid size of 800. 
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
 
 For Percolation UF, if we continue to multiply the time by a factor of 6 (since we saw that the time multiplied by a factor of between 5 and 7 every time we doubled grid size , 
-we will just multiply the time by 6 every time we double the grid size), we will get 
+we will just multiply the time by 6), we will get 
+
 grid		time
 6400		752.244
 12800	4513.464
@@ -63,7 +64,8 @@ grid		time
 51200	162484.704
 
 Since the average of 27080.784 seconds and 162484.704 seconds is around 94782.74 seconds, we will estimate that the largest grid size is a little lower than the average 
-of 25600 and 51200, which is 38400. More specifically, a better estimate can be found by doing (38400 * 86400
+of 25600 and 51200, which is 38400. More specifically, a better estimate can be found by doing (38400 * 86400 / 94782.74) = 35003.84. The largest grid size that you can run in 24 hrs
+is approximately 35003. 
 
 
 
