@@ -31,22 +31,33 @@ public class PercolationUF implements IPercolate{
 		}
 		if (row == 0 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VTOP);
+			myOpenCount += 1;
 		}
 		if (row == size - 1 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VBOTTOM);
+			myOpenCount += 1;
+
 		}
  
 		if (isOpen(row,col) && isOpen(row+1,col)) {
 			myFinder.union(row*size + col, (row+1) * size + col);
+			myOpenCount += 1;
+
 		}
 		if (isOpen(row,col) && isOpen(row-1,col)) {
 			myFinder.union(row*size + col, (row-1) * size + col);
+			myOpenCount += 1;
+
 		}
 		if (isOpen(row,col) && isOpen(row,col+1)) {
 			myFinder.union(row*size + col, row*size + (col+1));
+			myOpenCount += 1;
+
 		}
 		if (isOpen(row,col) && isOpen(row,col-1)) {
 			myFinder.union(row*size + col, row*size + (col-1));
+			myOpenCount += 1;
+
 		}
 		
 	}
@@ -67,8 +78,6 @@ public class PercolationUF implements IPercolate{
 					String.format("(%d,%d) not in bounds", row,col));
 		}
 		return myFinder.connected(row*myGrid.length + col, VTOP);
-		
-		
 	}
 
 	@Override
