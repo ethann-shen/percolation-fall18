@@ -1,8 +1,9 @@
-Your name
-Your netid
+Ethan Shen
+es321
 
 Copy/Paste results from PercolationStats using PercolationDFS
 
+N/A
 
 Copy/Paste results from PercolationStats using PercolationDFSFast
 
@@ -15,14 +16,51 @@ grid	mean	stddev	time
 
 Copy/Paste results from PercolationStats using PercolationBFS
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.063
+200	0.591	0.010	0.106
+400	0.590	0.006	0.750
+800	0.594	0.004	4.444
+1600	0.592	0.002	28.577
+3200	0.593	0.001	160.740
 
 Copy/Paste results from PercolationStats using PercolationUF 
 with the QuickUWPC UnionFind implementation.
 
+simulation data for 20 trials
+grid	mean	stddev	time
+100	0.593	0.014	0.058
+200	0.591	0.010	0.108
+400	0.590	0.006	0.589
+800	0.594	0.004	3.125
+1600	0.592	0.002	17.541
+3200	0.593	0.001	125.374
+
 1. How does doubling the grid size affect running time (keeping # trials fixed)
 
+As the grid size doubles, we expect the time to increase by a multiplicative factor of between approximately 5 and 7.
+For example, for PercolationBFS, the time for a grid size of 400 is 0.750 and the time for a grid size of 800 is 4.444.
+The time increased by a factor of 5.9. We can also look at PercolationUF. The time for a grid size of 400 is .589
+and the time for a grid size of 800 is 3.125. The time here increased by a factor of 5.3. 
 
 2. How does doubling the number of trials affect running time.
 
+Doubling the number of trials doubles the running time. For example, when using 10 trials for Percolation UF,
+it takes 1.716 seconds for a grid size of 800, but when using 20 trials for PercolationUF, it takes 
+3.125 seconds for a grid size of 800. 
+We can also look at PercolationBFS. When using 10 trials, it takes 2.072 seconds for a grid size of 800, 
+but when using 20 trials, it takes 4.444 seconds for a grid size of 800. 
 
 3. Estimate the largest grid size you can run in 24 hours with 20 trials. Explain your reasoning.
+
+For Percolation UF, if we continue to multiply the time by a factor of 6 (since we saw that the time multiplied by a factor of between 5 and 7 every time we doubled grid size , 
+we will just multiply the time by 6 every time we double the grid size), we will get 
+grid		time
+6400		752.244
+12800	4513.464
+25600	27080.784
+51200	162484.704
+
+86400 seconds is somewhere between a grid size of 25600 and 51200. I did 86400/27080.784 = 3.19. I then did 6/3.19 = 1.88, to figure out how much I should multiply 25600 by. 
+Then I multiplied 1.88 and 25600 and got 48142.32. The largest grid size you can run is approximately 48142.
