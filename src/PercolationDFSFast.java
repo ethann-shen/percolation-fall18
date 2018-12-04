@@ -11,31 +11,21 @@ public class PercolationDFSFast extends PercolationDFS{
 			dfs(row,col);
 		}
 		
-		if (inBounds(row-1,col)) {
-			if(myGrid[row-1][col] == FULL && myGrid[row][col] == OPEN) {
-				dfs(row,col); 
-			}
+		if (inBounds(row-1,col) && isFull(row-1,col) && isOpen(row,col)) {
+			dfs(row,col); 
 		}
 		
-		if (inBounds(row,col-1)) {
-			if(myGrid[row][col-1] == FULL && myGrid[row][col] == OPEN) {
-				dfs(row,col); 
-			}
+		if (inBounds(row+1,col) && isFull(row+1,col) && isOpen(row,col)) {
+			dfs(row,col); 
 		}
 		
-		if (inBounds(row,col+1)) {
-			if(myGrid[row][col+1] == FULL && myGrid[row][col] == OPEN) {
-				dfs(row,col); 
-			}
+		if (inBounds(row,col+1) && isFull(row,col+1) && isOpen(row,col)) {
+			dfs(row,col);
 		}
 		
-		
-		if (inBounds(row+1,col)) {
-			if(myGrid[row+1][col] == FULL && myGrid[row][col] == OPEN) {
-				dfs(row,col); 
-			}
+		if (inBounds(row,col-1) && isFull(row,col-1) && isOpen(row,col)) {
+			dfs(row,col);
 		}
-		
 	}
 
 }
