@@ -35,17 +35,17 @@ public class PercolationUF implements IPercolate{
 		if (row == size - 1 && isOpen(row,col)) {
 			myFinder.union(row*size + col, VBOTTOM);
 		}
-
-		if (isOpen(row+1,col)) {
+ 
+		if (isOpen(row,col) && isOpen(row+1,col)) {
 			myFinder.union(row*size + col, (row+1) * size + col);
 		}
-		if (isOpen(row-1,col)) {
+		if (isOpen(row,col) && isOpen(row-1,col)) {
 			myFinder.union(row*size + col, (row-1) * size + col);
 		}
-		if (isOpen(row,col+1)) {
+		if (isOpen(row,col) && isOpen(row,col+1)) {
 			myFinder.union(row*size + col, row*size + (col+1));
 		}
-		if (isOpen(row,col-1)) {
+		if (isOpen(row,col) && isOpen(row,col-1)) {
 			myFinder.union(row*size + col, row*size + (col-1));
 		}
 		
